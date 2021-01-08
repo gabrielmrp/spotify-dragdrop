@@ -1,6 +1,2 @@
 flask
-wekzeug
-json
-re
-urllib
-requests
+werkzeug 
