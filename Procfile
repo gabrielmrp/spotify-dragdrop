@@ -1,1 +1,1 @@
-worker: python demo.py --log-file -
+worker: python demo.py
