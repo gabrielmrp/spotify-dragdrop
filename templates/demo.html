@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="{{url_for('static', filename='js/spotify_dragdrop.js')}}"></script>
+	<link rel="icon" 
+      type="image/png" 
+      href="/static/favicon.ico">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+<style type="text/css">
+	p,small,label{font-family: Ubuntu;color:whitesmoke;text-align: center;}
+	button.remove{font-family: 'Ubuntu';
+    background: gray;
+    color: whitesmoke;
+    border: 1px solid gray;
+    border-radius: 10px 0px 10px 0px;}
+	.audiofile{
+	border: 1px solid grey;
+    margin: 10px 10px;
+    margin-left: 0px;
+    width: 5rem;
+float:left;}
+    .item_header{    display: grid;}
+    img{width: 100%;}
+    .info{margin: 2px}
+    #content{display: flex;}
+</style>
+</head>
+<body style="background: url({{url_for('static',filename='slash_it.png')}}";>
+	<button onclick="remove()" class="remove" style="margin:10px 0px">clear</button>
+ 	<div id='droparea' style="border: 5px dashed grey;height: 100px;width: 100%">
+		<div class="box__input">
+			<svg class="box__icon" xmlns="http://www.w3.org/2000/svg" width="50" height="43" viewBox="0 0 50 43"><path d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z"></path></svg>
+			 
+			<label style="margin: 0 50%;"><strong>Drop&nbspHere</strong></label>
+			 
+			</div>
+	</div>
+	<div id='content'  class="tablearea ">
+	</div>
+</body>
+
+
+<script type="text/javascript">
+
+	var remove = function(){
+		$('.audiofile').remove()
+	}
+		var dragHandler = 
+
+		function(evt){
+			evt.preventDefault();
+		};
+ 
+
+		var dropHandler = 
+
+		function(evt){
+
+			  var headerObj = ""
+
+ 
+
+			var html_data = evt.originalEvent.dataTransfer.getData("text/html")
+            var plain_data = evt.originalEvent.dataTransfer.getData("text/plain")
+
+			i=0;
+			var style = "top:"+(evt.pageY )+"px;"+"left:"+(evt.pageX )+"px";
+
+			var queryDict = {}
+            location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
+            token= queryDict['token']
+
+			evt.preventDefault();
+
+			AfterDrop = function(){return true;}
+			 
+ 			CallDropLink(html_data,plain_data,token,i,style,AfterDrop,headerObj)
+
+				 
+ 
+			};
+			
+
+		var dropHandlerSet = {
+			dragover: dragHandler,
+			drop: dropHandler
+		}; 
+
+
+	 window.setTimeout(function () {
+	     
+	  location.href="refresh/"
+	}, 30*60*1000);
+
+
+
+
+		$("#droparea").on(dropHandlerSet);
+
+	</script>
