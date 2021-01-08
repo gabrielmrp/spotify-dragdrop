@@ -1,6 +1,5 @@
 flask
 werkzeug
-json
 re
 urllib
 requests
