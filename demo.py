@@ -30,7 +30,7 @@ SHOW_DIALOG_str = str(SHOW_DIALOG_bool).lower()
 
 auth_query_parameters = {
     "response_type": "code",
-    "redirect_uri":  REDIRECT_URI, 
+    "redirect_uri":  """REDIRECT_URI,"""  "{}/callback/".format(CLIENT_SIDE_URL),
     "scope": SCOPE,
     # "state": STATE,
     # "show_dialog": SHOW_DIALOG_str,
