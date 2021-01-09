@@ -31,7 +31,7 @@ SHOW_DIALOG_str = str(SHOW_DIALOG_bool).lower()
 auth_query_parameters = {
     "response_type": "code",
     "redirect_uri": #REDIRECT_URI,
-	"https://spotify-dragdrop.herokuapp.com:5000/callback",
+	"https://spotify-dragdrop.herokuapp.com:5000/callback/",
     "scope": SCOPE,
     # "state": STATE,
     # "show_dialog": SHOW_DIALOG_str,
