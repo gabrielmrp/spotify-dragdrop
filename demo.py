@@ -20,7 +20,7 @@ API_VERSION = "v1"
 SPOTIFY_API_URL = "{}/{}".format(SPOTIFY_API_BASE_URL, API_VERSION)
 
 # Server-side Parameters
-CLIENT_SIDE_URL = "https://spotify-dragdrop.herokuapp.com/"
+CLIENT_SIDE_URL = "https://spotify-dragdrop.herokuapp.com"
 PORT = 5000
 REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL,PORT)
 SCOPE = "playlist-modify-public playlist-modify-private"
@@ -30,8 +30,7 @@ SHOW_DIALOG_str = str(SHOW_DIALOG_bool).lower()
 
 auth_query_parameters = {
     "response_type": "code",
-    "redirect_uri": #REDIRECT_URI,
-	"https://spotify-dragdrop.herokuapp.com:5000/callback/",
+    "redirect_uri":  REDIRECT_URI, 
     "scope": SCOPE,
     # "state": STATE,
     # "show_dialog": SHOW_DIALOG_str,
